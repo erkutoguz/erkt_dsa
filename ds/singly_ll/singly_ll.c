@@ -49,6 +49,10 @@ int main(int argc, char **argv)
 
 	traverse(sll);
 
+	reverse_list(sll);
+
+	traverse(sll);
+
 	free_list(sll);
 
 	traverse(sll);
@@ -237,4 +241,22 @@ void free_list(SLL *sll)
 		sll->head = sll->head->next;
 		sll->size--;
 	}
+}
+
+void reverse_list(SLL *sll)
+{
+	Node *curr, *prev, *next;
+
+	curr = sll->head;
+	prev = NULL;
+
+	while (curr) {
+		next = curr->next; // store after curr
+		curr->next = prev; // the next node of curr is now reversed list
+		prev = curr;	   // and then reversed list is curr
+		curr = next;	   // curr is the next node of original list
+	}
+
+	sll->tail = sll->head; // new tail is now head of original list
+	sll->head = prev;      // new head is reversed list
 }

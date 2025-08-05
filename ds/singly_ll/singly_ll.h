@@ -38,5 +38,7 @@ void traverse(SLL*);
 int size(SLL*);
 int is_empty(SLL*);
 void free_list(SLL*);
+void reverse_list(SLL*);
+
 
 int main(int,char**);
